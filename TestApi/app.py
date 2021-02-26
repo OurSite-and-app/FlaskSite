@@ -8,8 +8,13 @@ def ping():
     return jsonify({"message": "pong!"})
 
 @app.route('/products')
-def getProduct():
-    return jsonify(products)
+def getProducts():
+    return jsonify({"myproducts":products,"message":"Product's List"})
+
+@app.route('/products/<string:product_name>') #хотим получить часть запроса
+def getProduct(product_name):
+    productsFound=[product for product in products if product['name']== product_name]
+    return jsonify({"product": productsFound[0]})
 
 
 
