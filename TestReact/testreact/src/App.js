@@ -1,41 +1,49 @@
 import React, { Component } from "react";
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Body, Body2 } from './components/Body'
+import { Header } from "./components/Header";
 
 
+// const Body = () => {
+//   return (
+//     <p className="App-intro">
+//       To get started, edit <code>src/App.js</code> and save to reload.
+//     </p>
+//   );
+// };
+
+// function Body() {
+//   return (
+//     <p className="App-intro">
+//       To get started, edit <code>src/App.js</code> and save to reload.
+//     </p>
+//   );
+// }
 
 
-
-class Header extends Component {
-  render() {
-    return (
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-
-    )
-  }
-}
 
 class App extends Component {
+  add(a, b) {
+    return a + b;
+  }
+
   render() {
     return (
       <div className="App">
-        <Header />
-
+        <Header
+          title={"Hello"}
+          num={7}
+          myArr={[10, 2, 3]}
+          myFunc={this.add}
+          myObj={{
+            a: 5,
+            b: 6
+          }}
+        />
+        <Body2 />
+        <Body myFunc={this.add} text="i am cool" text2="i am cool2" />
+        <Body myFunc={this.add} text="i am" text2="i cool2" />
       </div>
-
     );
   }
 }
