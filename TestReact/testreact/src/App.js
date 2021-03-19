@@ -1,13 +1,18 @@
+import React, { Component } from "react";
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
+
+
+
+
+class Header extends Component {
+  render() {
+    return (
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Hello
         </p>
         <a
           className="App-link"
@@ -18,8 +23,21 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
-  );
+
+    )
+  }
+}
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+
+      </div>
+
+    );
+  }
 }
 
 export default App;
