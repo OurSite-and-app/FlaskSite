@@ -54,6 +54,8 @@ class PartyCreationForm extends React.Component {
     //     console.log(this.state);
     // };
     validate = () => {
+        let data = localStorage.getItem('myToken')
+        console.log(typeof (data)) //!!!!!!!!!!!!!!! тут можно проверять тайм-аут токена
         let nameError = "";
         let timeError = "";
         // let passwordError = "";
@@ -204,11 +206,14 @@ class PartyCreationForm extends React.Component {
 
 
                             (async () => {
+                                let myToken = localStorage.getItem('myToken')
                                 const party = { title, theme, date_time, dress_code, comments };
-                                const response = await fetch("/add_party", {
+                                const response = await fetch("/add_new_party", {
                                     method: "POST",
                                     headers: {
-                                        "Content-Type": "application/json"
+                                        "Content-Type": "application/json",
+                                        "x-access-token": myToken.replace(/['"]+/g, '') // убираем лишние кавычки
+
                                     },
                                     body: JSON.stringify(party)
                                 });
@@ -218,6 +223,7 @@ class PartyCreationForm extends React.Component {
                                 if (response.ok) {
                                     console.log("response worked!");
                                     this.props.onNewParty(party)
+                                    window.location.reload();//!!!
                                 }
                                 else {
                                     console.log("ERRORR");

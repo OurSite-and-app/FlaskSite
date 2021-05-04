@@ -23,7 +23,6 @@ function Home() {
 
     return (
 
-
         // <div >
         //     <h1>Home page with button to create a Party</h1>
         // </div>
@@ -33,8 +32,14 @@ function Home() {
                 <nav>
                     {/* <h3>Logo</h3> */}
                     <ul className="nav-links">
-                        <Link style={navStyle} to='/PartyCreationForm'>
-                            <li>JustButton</li>
+                        <Link style={navStyle} to='/Registration'>
+                            <li>Registration</li>
+                        </Link>
+                        <Link style={navStyle} to='/Login'>
+                            <li>Login</li>
+                        </Link>
+                        <Link style={navStyle} to='/PartiesOfUser'>
+                            <li>Your Parties</li>
                         </Link>
                     </ul>
                 </nav>
