@@ -24,7 +24,7 @@ Back-end - Flask
 
 Front - React-js
 
-Android - Java+ Volley (библиотека для rest-api)
+Android & IOS - ReactNative
 
 ## Дорожная карта проекта
 Даты ориентировочные, но всё же:
