@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '../App.css';
 import Background from '../mountaincity2.jpg';
 
-
+const TITLE="PartyNow!🎉"
 function Home() {
     const navStyle = {
 
@@ -11,14 +11,14 @@ function Home() {
     }
     let sectionStyle = {
         width: "100%",
-        height: "970px",
+        height: "960px",
         backgroundImage: `url(${Background})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover'
 
 
     };
-
+    document.title = TITLE
 
 
     return (
@@ -32,25 +32,53 @@ function Home() {
                 <nav>
                     {/* <h3>Logo</h3> */}
                     <ul className="nav-links">
-                        <Link style={navStyle} to='/Registration'>
-                            <li>Registration</li>
-                        </Link>
-                        <Link style={navStyle} to='/Login'>
-                            <li>Login</li>
-                        </Link>
-                        <Link style={navStyle} to='/PartiesOfUser'>
-                            <li>Your Parties</li>
-                        </Link>
+
+                        {console.log("HERE TOKEN", localStorage.getItem('myToken'))}
+                        {
+                            !(localStorage.getItem('myToken')) ?
+
+                                <Link style={navStyle} to='/Registration'>
+                                    <li>Registration</li>
+                                </Link> : null
+                        }
+                        {
+                            !(localStorage.getItem('myToken')) ?
+                                <Link style={navStyle} to='/Login'>
+                                    <li>Login</li>
+                                </Link>
+                                : null
+
+                        }
+
+                        {
+                            !(localStorage.getItem('myToken')) ? null :
+
+                                <Link style={navStyle} to='/Logout'>
+                                    <li>Logout</li>
+                                </Link>
+
+                        }
+
+                        {
+                            !(localStorage.getItem('myToken')) ? null : <Link style={navStyle} to='/PartiesOfUser'>
+
+                                {/* {typeof (localStorage.getItem('myToken')) === undefined ? <div>Zdarova</div> : <li>Your Parties</li>} */}
+                                <li>Your Parties</li>
+                            </Link>
+                        }
+
                     </ul>
                 </nav>
                 <div className="wrapper">
 
-
-                    <Link to="/PartyCreationForm">
-                        <button class="PartyCreationbutton">
-                            create a Party!
+                    {
+                        !(localStorage.getItem('myToken')) ? null :
+                            <Link to="/PartyCreationForm">
+                                <button class="PartyCreationbutton">
+                                    create a Party!
                         </button>
-                    </Link>
+                            </Link>
+                    }
 
                 </div>
 
